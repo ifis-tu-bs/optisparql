@@ -1,0 +1,9 @@
+[
+	"?var5 dbpowl:thumbnail ?var4",
+	"?var5 rdf:type dbpowl:Person",
+	"?var5 rdfs:label ?var",
+	"?var5 foaf:page ?var8",
+	[
+		"?var5 foaf:homepage ?var10"
+	]
+]

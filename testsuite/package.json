@@ -1,0 +1,30 @@
+{
+  "name": "optisparql-testsuite",
+  "version": "1.0.0",
+  "description": "A web based GUI for building and testing SPARQL queries with OPTIMAL",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ifis-tu-bs/optisparql/testsuite"
+  },
+  "keywords": [
+    "sparql",
+    "rdf",
+    "preferences",
+    "optimal",
+    "data",
+    "schema",
+    "database",
+    "knowledge",
+    "graph"
+  ],
+  "author": "Till Affeldt <t.affeldt@tu-braunschweig.de>",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "http-server": "^0.12.1"
+  }
+}

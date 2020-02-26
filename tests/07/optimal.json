@@ -1,0 +1,8 @@
+[
+	"?uri rdf:type dbo:Film",
+	"?uri dbo:starring ?actor",
+	"?uri dbo:starring ?actor2. FILTER(?actor != ?actor2)",
+	[ "?actor dbo:parent ?actor2 . BIND(1 AS ?parent)" ],
+	[ "?actor dbo:spouse ?actor2 . BIND(1 AS ?spouse)" ],
+	[ "?actor dbo:partner ?actor2 . BIND(1 AS ?partner)" ]
+]

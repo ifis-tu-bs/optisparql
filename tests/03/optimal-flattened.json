@@ -1,0 +1,9 @@
+[
+	"?var0 rdfs:comment ?var1",
+	"?var0 foaf:page ?var",
+	[
+		"?var0 dbpprop:industry ?var5",
+		"?var0 dbpprop:products ?var11 . ?var0 dbpprop:model ?var0",
+		"?var0 <http://www.georss.org/georss/point> ?var10"
+	]
+]

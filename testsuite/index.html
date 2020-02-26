@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>OptiTest — SPARQL OPTIMAL Testsuite</title>
+    <link rel="stylesheet" href="index.css">
+		<link rel="stylesheet" href="prism/prism.css">
+		<link rel="icon" href="favicon.png">
+    <script type="application/javascript" defer="defer" src="query-builder/optimal.js"></script>
+    <script type="application/javascript" defer="defer" src="query-builder/common.js"></script>
+    <script type="application/javascript" defer="defer" src="query-builder/optional.js"></script>
+		<script type="application/javascript" defer="defer" src="query-builder/union.js"></script>
+    <script type="application/javascript" defer="defer" src="performance-analyser.js"></script>
+    <script type="application/javascript" defer="defer" src="prism/prism.js"></script>
+    <script type="application/javascript" defer="defer" src="index.js"></script>
+    <meta name="author" content="Till Affeldt <t.affeldt@tu-braunschweig.de>">
+  </head>
+  <body>
+    <header>
+      <h1>OptiSparql <img class="icon" src="favicon.png" height="40" width="40" alt="🐿️"></h1>
+      <p>Testsuite for SPARQL OPTIMAL queries</p>
+			<p id="message-box">Insert your variable selection and query like in the example below.</p>
+    </header>
+
+    <main>
+      <form id="inputset" onsubmit="preventDefault()">
+        <input placeholder="Selection" id="selection-input" type="text" value="*">
+        <textarea placeholder="Prefixes and Headers" id="header-input"></textarea>
+        <textarea placeholder="JSON query representation" id="json-input"></textarea>
+        <input type="text" placeholder="Additional query parts like LIMIT" id="footer-input" value="LIMIT 1000">
+        <button type="button" onclick="parseCode()">Generate SPARQL queries</button>
+        <button type="button" onclick="testQuery()">Test generated SPARQL queries</button>
+      </form>
+
+      <div id="resultset">
+				<section>
+					<header>
+	        	<h2>Query with OPTIMAL</h2>
+					</header>
+	    		<pre class="language-sparql line-numbers match-braces">
+	          <code id="optimal-query"></code>
+	        </pre>
+				</section>
+
+				<section>
+					<header>
+	        	<h2>Query with OPTIONAL</h2>
+						<span id="optional-performance" class="performance-msg">Performance test not run yet</span>
+					</header>
+	        <pre class="language-sparql line-numbers match-braces">
+	          <code id="optional-query"></code>
+	        </pre>
+				</section>
+
+				<section>
+					<header>
+		        <h2>Query with UNION</h2>
+						<span id="union-performance" class="performance-msg">Performance test not run yet</span>
+					</header>
+	        <pre class="language-sparql line-numbers match-braces">
+	          <code id="union-query"></code>
+	        </pre>
+				</section>
+      </div>
+    </main>
+  </body>
+</html>

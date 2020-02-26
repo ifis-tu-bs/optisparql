@@ -1,0 +1,7 @@
+[
+	"?var0 rdfs:comment ?var1",
+	"?var0 foaf:page ?var",
+	[ "?var0 dct:subject ?var6" ],
+	[ "?var0 dbpprop:locationCity ?var9 . ?var0 dbpprop:manufacturer ?var0" ],
+	[ "?var0 rdf:type ?var7" ]
+]

@@ -1,0 +1,13 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?company ?uri ?parent ?place
+WHERE {
+  ?company rdf:type dbo:Organisation . ?uri dbo:developer ?company .
+  {
+    { BIND (0 AS ?optlevel_) . } UNION { ?company dbo:parentCompany ?parent . BIND (1 AS ?optlevel_) . } UNION { ?uri rdf:type dbo:Software . BIND (2 AS ?optlevel_) . } UNION { ?company dbo:parentCompany ?parent . ?uri rdf:type dbo:Software . BIND (3 AS ?optlevel_) . } UNION { ?company dbo:foundationPlace ?place . BIND (4 AS ?optlevel_) . } UNION { ?company dbo:parentCompany ?parent . ?company dbo:foundationPlace ?place . BIND (5 AS ?optlevel_) . } UNION { ?uri rdf:type dbo:Software . ?company dbo:foundationPlace ?place . BIND (6 AS ?optlevel_) . } UNION { ?company dbo:parentCompany ?parent . ?uri rdf:type dbo:Software . ?company dbo:foundationPlace ?place . BIND (7 AS ?optlevel_) . }
+  }
+  BIND(EXISTS { ?opt_company rdf:type dbo:Organisation . ?opt_uri dbo:developer ?opt_company . ?opt_company dbo:parentCompany ?opt_parent . } AS ?optgroup1_) . BIND(EXISTS { ?opt_company rdf:type dbo:Organisation . ?opt_uri dbo:developer ?opt_company . ?opt_uri rdf:type dbo:Software . } AS ?optgroup2_) . BIND(EXISTS { ?opt_company rdf:type dbo:Organisation . ?opt_uri dbo:developer ?opt_company . ?opt_company dbo:parentCompany ?opt_parent . ?opt_uri rdf:type dbo:Software . } AS ?optgroup3_) . BIND(EXISTS { ?opt_company rdf:type dbo:Organisation . ?opt_uri dbo:developer ?opt_company . ?opt_company dbo:foundationPlace ?opt_place . } AS ?optgroup4_) . BIND(EXISTS { ?opt_company rdf:type dbo:Organisation . ?opt_uri dbo:developer ?opt_company . ?opt_company dbo:parentCompany ?opt_parent . ?opt_company dbo:foundationPlace ?opt_place . } AS ?optgroup5_) . BIND(EXISTS { ?opt_company rdf:type dbo:Organisation . ?opt_uri dbo:developer ?opt_company . ?opt_uri rdf:type dbo:Software . ?opt_company dbo:foundationPlace ?opt_place . } AS ?optgroup6_) . BIND(EXISTS { ?opt_company rdf:type dbo:Organisation . ?opt_uri dbo:developer ?opt_company . ?opt_company dbo:parentCompany ?opt_parent . ?opt_uri rdf:type dbo:Software . ?opt_company dbo:foundationPlace ?opt_place . } AS ?optgroup7_) .
+  FILTER (!(?optgroup1_ && ?optlevel_ in (0, 2, 4, 6))) FILTER (!(?optgroup2_ && ?optlevel_ in (0, 4))) FILTER (!(?optgroup3_ && ?optlevel_ in (0, 1, 2, 4, 5, 6))) FILTER (!(?optgroup4_ && ?optlevel_ in (0))) FILTER (!(?optgroup5_ && ?optlevel_ in (0, 1, 2, 4, 6))) FILTER (!(?optgroup6_ && ?optlevel_ in (0, 2, 4))) FILTER (!(?optgroup7_ && ?optlevel_ in (0, 1, 2, 3, 4, 5, 6)))
+}

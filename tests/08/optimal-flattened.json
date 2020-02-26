@@ -1,0 +1,9 @@
+[
+	"?company rdf:type dbo:Organisation",
+	"?uri dbo:developer ?company",
+	[
+		"?uri rdf:type dbo:Software",
+		"?company dbo:foundationPlace ?place",
+		"?company dbo:parentCompany ?parent"
+	]
+]
